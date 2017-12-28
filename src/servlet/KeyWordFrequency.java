@@ -38,7 +38,11 @@ public class KeyWordFrequency extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// doGet(request, response);
+		String keyWords = request.getParameter("keywords");
+		String text = request.getParameter("text");
+		System.out.println(keyWords);
+		System.out.println(text);
+		doGet(request, response);
 	}
 
 }
