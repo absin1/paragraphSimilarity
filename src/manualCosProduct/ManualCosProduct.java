@@ -54,7 +54,7 @@ public class ManualCosProduct {
 		return dotProduct / (Math.sqrt(normA) * Math.sqrt(normB));
 	}
 
-	private SortedMap<String, Double> getSortedTreeMap(String text) throws IOException {
+	public SortedMap<String, Double> getSortedTreeMap(String text) throws IOException {
 		ManualCosProduct cosProduct = new ManualCosProduct();
 		text = cosProduct.removeStopWords(text);
 		text = cosProduct.cleanText(text);
