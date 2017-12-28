@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import service.KeyWordFrequencyService;
+
 /**
  * Servlet implementation class KeyWordFrequency
  */
@@ -40,9 +42,11 @@ public class KeyWordFrequency extends HttpServlet {
 			throws ServletException, IOException {
 		String keyWords = request.getParameter("keywords");
 		String text = request.getParameter("text");
+
 		System.out.println(keyWords);
 		System.out.println(text);
-		doGet(request, response);
+		response.getWriter().append(new KeyWordFrequencyService().generateResponse(keyWords, text));
+		// doGet(request, response);
 	}
 
 }

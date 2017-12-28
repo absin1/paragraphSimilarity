@@ -17,12 +17,12 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/stanford-corenlp-3.8.0-sources.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/stanford-corenlp-3.8.0.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-text-1.2.jar"/>
-	<classpathentry kind="lib" path="/Users/feroz/Desktop/libs/stanford-corenlp-3.8.0-models.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/extjwnl-1.9.4.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/extjwnl-data-wn31-1.2.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/slf4j-api-1.7.25.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/slf4j-simple-1.7.25.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/concurrentlinkedhashmap-lru-1.4.2.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/json-20171018.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/stanford-corenlp-3.8.0-models.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
