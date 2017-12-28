@@ -24,5 +24,6 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/concurrentlinkedhashmap-lru-1.4.2.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/json-20171018.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/stanford-corenlp-3.8.0-models.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/gson-2.8.2.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

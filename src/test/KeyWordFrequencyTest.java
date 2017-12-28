@@ -9,6 +9,24 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
+/**
+ * This test class shows a sample implementation of the web service exposed to
+ * perform a semantic coverage analysis of the keywords in a given text.
+ * 
+ * @return A JSON object with keys as the keywords supplied by the user and
+ *         value as the frequency count of the keywords in the text
+ * 
+ * @param keywords
+ *            Comma separated keywords
+ * @param text
+ *            The text on which the presence of keyword check is to be done
+ * 
+ * @author absin
+ */
 public class KeyWordFrequencyTest {
 	static String baseURL = "http://localhost:8080/";
 
@@ -34,5 +52,11 @@ public class KeyWordFrequencyTest {
 		String result = reader.readLine();
 		reader.close();
 		System.out.println(result);
+		JsonParser jsonParser = new JsonParser();
+		JsonObject keyWordFrequencies = (JsonObject) jsonParser.parse(result);
+		for (String keyword : keyWordFrequencies.keySet()) {
+			Integer keyWordFrequency = keyWordFrequencies.get(keyword).getAsInt();
+			System.out.println(keyword + ">>" + keyWordFrequency);
+		}
 	}
 }
