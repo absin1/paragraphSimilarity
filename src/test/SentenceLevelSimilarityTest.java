@@ -68,9 +68,6 @@ public class SentenceLevelSimilarityTest {
 			int order = sentenceAsJsonObject.get("order").getAsInt();
 			String sentence = sentenceAsJsonObject.get("sentence").getAsString();
 			double score = sentenceAsJsonObject.get("score").getAsDouble();
-			if (score > 1) {
-				score = 1;
-			}
 			System.out.println("order >> " + order);
 			System.out.println("sentence >> " + sentence);
 			System.out.println("score >> " + score);

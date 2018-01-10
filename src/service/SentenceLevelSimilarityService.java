@@ -79,7 +79,10 @@ public class SentenceLevelSimilarityService {
 			if (!sentenceLevelScores.get(sentence).isNaN()) {
 				jsonObject.put("order", order++);
 				jsonObject.put("sentence", sentence);
-				jsonObject.put("score", sentenceLevelScores.get(sentence));
+				if (sentenceLevelScores.get(sentence) > 1)
+					jsonObject.put("score", 1.00);
+				else
+					jsonObject.put("score", sentenceLevelScores.get(sentence));
 				jsonArray.put(jsonObject);
 			}
 		}
