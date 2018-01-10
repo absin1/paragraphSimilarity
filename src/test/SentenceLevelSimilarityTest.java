@@ -9,6 +9,10 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
+import org.json.JSONArray;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
@@ -58,10 +62,15 @@ public class SentenceLevelSimilarityTest {
 		reader.close();
 		System.out.println(result);
 		JsonParser jsonParser = new JsonParser();
-		JsonObject sentenceScores = (JsonObject) jsonParser.parse(result);
-		for (String sentence : sentenceScores.keySet()) {
-			Double sentenceScore = sentenceScores.get(sentence).getAsDouble();
-			System.out.println(sentence + ">>" + sentenceScore);
+		JsonArray sentenceScores = (JsonArray) jsonParser.parse(result).getAsJsonArray();
+		for (JsonElement sentenceElement : sentenceScores) {
+			JsonObject sentenceAsJsonObject = sentenceElement.getAsJsonObject();
+			int order = sentenceAsJsonObject.get("order").getAsInt();
+			String sentence = sentenceAsJsonObject.get("sentence").getAsString();
+			double score = sentenceAsJsonObject.get("score").getAsDouble();
+			System.out.println("order >> " + order);
+			System.out.println("sentence >> " + sentence);
+			System.out.println("score >> " + score);
 			// sentence score will vary between 0-1, 1 being the best and 0
 			// being the worst
 		}

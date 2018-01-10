@@ -4,11 +4,13 @@
 package service;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Properties;
 import java.util.SortedMap;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import edu.stanford.nlp.ling.CoreAnnotations.SentencesAnnotation;
@@ -24,6 +26,7 @@ public class SentenceLevelSimilarityService {
 
 	public String generateResponse(String standardText, String userText) {
 		HashMap<String, Double> sentenceLevelScores = new HashMap<>();
+		ArrayList<String> orderedSentences = new ArrayList<>();
 		NLPServices nlpServices = new NLPServices();
 		CosineDifferenceServices cosineDifferenceServices = new CosineDifferenceServices();
 		try {
@@ -67,13 +70,20 @@ public class SentenceLevelSimilarityService {
 			}
 			double sentenceCosineSimilarity = cosineDifferenceServices.cosineSimilarity(vectorA, vectorB);
 			sentenceLevelScores.put(standardSentence.toString(), sentenceCosineSimilarity);
+			orderedSentences.add(standardSentence.toString());
 		}
-		JSONObject jsonObject = new JSONObject();
-		for (String sentence : sentenceLevelScores.keySet()) {
-			if (!sentenceLevelScores.get(sentence).isNaN())
-				jsonObject.put(sentence, sentenceLevelScores.get(sentence));
+		int order = 1;
+		JSONArray jsonArray = new JSONArray();
+		for (String sentence : orderedSentences) {
+			JSONObject jsonObject = new JSONObject();
+			if (!sentenceLevelScores.get(sentence).isNaN()) {
+				jsonObject.put("order", order++);
+				jsonObject.put("sentence", sentence);
+				jsonObject.put("score", sentenceLevelScores.get(sentence));
+				jsonArray.put(jsonObject);
+			}
 		}
-		return jsonObject.toString();
+		return jsonArray.toString();
 	}
 
 }
